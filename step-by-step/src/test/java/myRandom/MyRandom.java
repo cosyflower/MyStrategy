@@ -10,12 +10,12 @@ import java.util.stream.IntStream;
 public class MyRandom {
     private static final Random random = ThreadLocalRandom.current();
 
-    static int pickNumberInList(List<Integer> numbers) {
+    public static int pickNumberInList(List<Integer> numbers) {
         validateNumbers(numbers);
         return numbers.get(pickRandomNumberInRange(0, numbers.size() - 1));
     }
 
-    static int pickRandomNumberInRange(int startInclusive, int endInclusive) {
+    public static int pickRandomNumberInRange(int startInclusive, int endInclusive) {
         validateRange(startInclusive, endInclusive);
         return startInclusive + random.nextInt(endInclusive - startInclusive + 1);
     }
@@ -59,6 +59,10 @@ public class MyRandom {
         List<T> newList = new ArrayList<>(numbers);
         Collections.shuffle(newList);
         return newList;
+    }
+
+    public static void new_function(List<Integer> notList) {
+
     }
 
 }
