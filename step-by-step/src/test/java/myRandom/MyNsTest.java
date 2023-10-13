@@ -44,6 +44,7 @@ public class MyNsTest {
     protected final void command(String... args) {
         byte[] getBytes = String.join("\n", args).getBytes();
         System.setIn(new ByteArrayInputStream(getBytes));
+
     }
 
 }

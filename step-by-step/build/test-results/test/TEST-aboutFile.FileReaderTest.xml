@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="aboutFile.FileReaderTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-10-13T07:22:16" hostname="hwangseonghun-ui-MacBookPro.local" time="0.022">
+  <properties/>
+  <testcase name="read_file()" classname="aboutFile.FileReaderTest" time="0.022"/>
+  <system-out><![CDATA[성훈 혜림
+선영 상호
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

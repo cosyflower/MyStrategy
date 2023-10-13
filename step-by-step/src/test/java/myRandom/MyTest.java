@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static myRandom.MyAssertions.checkMyRandomNumber;
 import static myRandom.MyAssertions.checkMyRandomNumbersInRange;
