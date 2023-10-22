@@ -7,7 +7,7 @@ import mvcpattern.model.Level;
 import mvcpattern.model.Mission;
 
 public class MissionRepository {
-    private List<Mission> missions = new ArrayList<>();
+    private final List<Mission> missions = new ArrayList<>();
 
     public void saveAllNamesWithLevel(List<String> missionNames, Level level) {
         List<Mission> collectedMission = missionNames.stream()
