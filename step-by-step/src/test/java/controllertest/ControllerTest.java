@@ -14,7 +14,7 @@ public class ControllerTest {
                     mockController.callDirectStaticFunctionWithoutArguments();
                     mockController.callDirectStaticFunctionWithoutArguments();
                 }
-                ,2, 4, 10, 15
+                , 2, 4, 10, 15
         );
     }
 
@@ -24,12 +24,12 @@ public class ControllerTest {
                 () -> {
                     MockController mockController = new MockController();
 
-                    mockController.callDirectStaticFunctionWithArguments(10,20);
-                    mockController.callDirectStaticFunctionWithArguments(10,20);
-                    mockController.callDirectStaticFunctionWithArguments(10,20);
-                    mockController.callDirectStaticFunctionWithArguments(10,20);
+                    mockController.callDirectStaticFunctionWithArguments(10, 20);
+                    mockController.callDirectStaticFunctionWithArguments(10, 20);
+                    mockController.callDirectStaticFunctionWithArguments(10, 20);
+                    mockController.callDirectStaticFunctionWithArguments(10, 20);
                 }
-                ,2, 4, 10, 15
+                , 2, 4, 10, 15
         );
     }
 
@@ -41,10 +41,9 @@ public class ControllerTest {
 
                     mockController.callOutsideStaticFunctionFromInstance();
                     mockController.callOutsideStaticFunctionFromInstance();
-                    mockController.callOutsideStaticFunctionFromInstance();
-                    mockController.callOutsideStaticFunctionFromInstance();
+
                 }
-                ,2, 4, 10, 15
+                , 2, 4, 10, 15
         );
     }
 
@@ -57,7 +56,7 @@ public class ControllerTest {
                     MockRandom.callFuncForTest(100, 2000);
                     MockRandom.callFuncForTest(100, 2000);
                 }
-                ,2, 4, 10, 15
+                , 2, 4, 10, 15
         );
     }
 
@@ -75,9 +74,10 @@ public class ControllerTest {
                     System.out.println("mockC = " + mockC);
 
                     int mockD = MockRandom.pickRandomNumberInRange(100, 2000);
-                    System.out.println("mockD = " + mockD);;
+                    System.out.println("mockD = " + mockD);
+                    ;
                 }
-                ,2, 4, 10, 15
+                , 2, 4, 10, 15
         );
     }
 
