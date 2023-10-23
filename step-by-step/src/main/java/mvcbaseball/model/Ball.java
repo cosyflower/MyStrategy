@@ -1,5 +1,7 @@
 package mvcbaseball.model;
 
+import java.util.Objects;
+
 public class Ball {
     private final int digit;
     private final int value;
@@ -10,29 +12,23 @@ public class Ball {
     }
 
     public Result compareBallCondition(Ball otherBall) {
-        // 조건 만족하는 개수 확인하기
-        int trueCount = 0;
-        getSameConditionCount(otherBall, trueCount);
-
-        if (trueCount == 2) {
+        if (isStrike(otherBall)) {
             return Result.STRIKE;
         }
 
-        if (trueCount == 1) {
+        if (isBall(otherBall)) {
             return Result.BALL;
         }
 
         return Result.NOTHING;
     }
 
-    private void getSameConditionCount(Ball otherBall, int trueCount) {
-        if (hasSameValue(otherBall)) {
-            trueCount++;
-        }
+    private boolean isBall(Ball otherBall) {
+        return hasSameValue(otherBall) && !hasSameDigit(otherBall);
+    }
 
-        if (hasSameDigit(otherBall)) {
-            trueCount++;
-        }
+    private boolean isStrike(Ball otherBall) {
+        return hasSameValue(otherBall) && hasSameDigit(otherBall);
     }
 
     private boolean hasSameValue(Ball otherBall) {
@@ -41,6 +37,23 @@ public class Ball {
 
     private boolean hasSameDigit(Ball otherBall) {
         return digit == otherBall.getDigit();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Ball ball = (Ball) o;
+        return getDigit() == ball.getDigit() && getValue() == ball.getValue();
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getDigit(), getValue());
     }
 
     public int getDigit() {
