@@ -2,9 +2,6 @@ package mvcpattern.system;
 
 import java.util.HashMap;
 import java.util.Map;
-import mvcpattern.CrewRepository;
-import mvcpattern.MissionRepository;
-import mvcpattern.PairMatchingRepository;
 import mvcpattern.controller.Controller;
 import mvcpattern.controller.PairMatchingController;
 import mvcpattern.controller.ReadingCrewFileController;
@@ -12,10 +9,14 @@ import mvcpattern.controller.SavingMissionsController;
 import mvcpattern.controller.SelectingFeatureController;
 import mvcpattern.controller.SelectingMissionController;
 import mvcpattern.model.FeatureCommand;
+import mvcpattern.repository.CrewRepository;
+import mvcpattern.repository.MissionRepository;
+import mvcpattern.repository.PairMatchingRepository;
 import mvcpattern.system.util.PairsMaker;
-import mvcpattern.view.GettingFeatureInputView;
-import mvcpattern.view.SelectingFeatureOutputView;
-import mvcpattern.view.SelectingMissionOutputView;
+import mvcpattern.view.inputview.GettingFeatureInputView;
+import mvcpattern.view.outputview.MatchingResultOutputView;
+import mvcpattern.view.outputview.SelectingFeatureOutputView;
+import mvcpattern.view.outputview.SelectingMissionOutputView;
 
 public class PairApplication {
     public static final String READ_CREW_FILE = "readCrewFile";
@@ -35,7 +36,7 @@ public class PairApplication {
                 new SelectingMissionOutputView(), null, new MissionRepository()
         ));
         controllerMap.put(MATCH_PAIR, new PairMatchingController(new CrewRepository(),
-                new PairMatchingRepository(), new PairsMaker()));
+                new PairMatchingRepository(), new PairsMaker(), new MatchingResultOutputView()));
     }
 
     public void run() {

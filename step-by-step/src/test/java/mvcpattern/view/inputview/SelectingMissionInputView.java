@@ -1,4 +1,4 @@
-package mvcpattern.view;
+package mvcpattern.view.inputview;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

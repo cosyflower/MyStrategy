@@ -2,8 +2,8 @@ package mvcpattern.controller;
 
 import java.util.Map;
 import mvcpattern.model.FeatureCommand;
-import mvcpattern.view.InputView;
-import mvcpattern.view.OutputView;
+import mvcpattern.view.inputview.InputView;
+import mvcpattern.view.outputview.OutputView;
 
 public class SelectingFeatureController implements Controller { // 기능을 출력한다
     private final OutputView outputView;

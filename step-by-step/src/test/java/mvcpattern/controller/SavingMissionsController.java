@@ -3,8 +3,8 @@ package mvcpattern.controller;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-import mvcpattern.MissionRepository;
 import mvcpattern.model.Level;
+import mvcpattern.repository.MissionRepository;
 
 public class SavingMissionsController implements Controller {
     public final MissionRepository missionRepository;

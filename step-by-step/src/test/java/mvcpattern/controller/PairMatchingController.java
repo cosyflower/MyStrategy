@@ -4,23 +4,26 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
-import mvcpattern.CrewRepository;
-import mvcpattern.PairMatchingRepository;
 import mvcpattern.model.Crew;
 import mvcpattern.model.Pair;
 import mvcpattern.model.PairMatchingInfo;
+import mvcpattern.repository.CrewRepository;
+import mvcpattern.repository.PairMatchingRepository;
 import mvcpattern.system.util.PairsMaker;
+import mvcpattern.view.outputview.OutputView;
 
 public class PairMatchingController implements Controller {
     private final CrewRepository crewRepository;
     private final PairMatchingRepository pairMatchingRepository;
     private final PairsMaker pairsMaker;
+    private final OutputView outputView;
 
     public PairMatchingController(CrewRepository crewRepository, PairMatchingRepository pairMatchingRepository,
-                                  PairsMaker pairsMaker) {
+                                  PairsMaker pairsMaker, OutputView outputView) {
         this.crewRepository = crewRepository;
         this.pairMatchingRepository = pairMatchingRepository;
         this.pairsMaker = pairsMaker;
+        this.outputView = outputView;
     }
 
     @Override
@@ -42,6 +45,9 @@ public class PairMatchingController implements Controller {
         } while (pairMatchingRepository.hasDuplicatedPairAtSameLevel(pairMatchingInfo, pairs));
 
         pairMatchingRepository.save(pairMatchingInfo, pairs);
+
+        model.put("matchedPairNames", pairMatchingRepository.findAllPairNamesByPairMatchingInfo(pairMatchingInfo));
+        outputView.print(model);
     }
 
     private List<Crew> getShuffledCrews(List<Crew> foundCrews) {

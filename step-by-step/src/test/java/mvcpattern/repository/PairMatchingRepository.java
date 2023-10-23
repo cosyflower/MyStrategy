@@ -1,9 +1,10 @@
-package mvcpattern;
+package mvcpattern.repository;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import mvcpattern.exception.DuplicationPairsException;
 import mvcpattern.model.Level;
 import mvcpattern.model.Pair;
 import mvcpattern.model.PairMatchingInfo;
@@ -62,5 +63,19 @@ public class PairMatchingRepository {
                 matchedPairsAtSameLevels.add(pairs);
             }
         }));
+    }
+
+    public List<List<String>> findAllPairNamesByPairMatchingInfo(PairMatchingInfo pairMatchingInfo) {
+        List<List<String>> pairNamesByPairMatchingInfo = new ArrayList<>();
+        List<Pair> pairs = findByPairMatchingInfo(pairMatchingInfo);
+        for (Pair pair : pairs) {
+            pairNamesByPairMatchingInfo.add(pair.getNames());
+        }
+
+        return pairNamesByPairMatchingInfo;
+    }
+
+    private List<Pair> findByPairMatchingInfo(PairMatchingInfo pairMatchingInfo) {
+        return pairMatchingRepository.get(pairMatchingInfo);
     }
 }

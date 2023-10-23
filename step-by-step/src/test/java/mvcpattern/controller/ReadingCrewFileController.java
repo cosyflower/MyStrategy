@@ -6,10 +6,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import mvcpattern.CrewRepository;
 import mvcpattern.converter.NamesToCrewConverter;
 import mvcpattern.model.Course;
 import mvcpattern.model.Crew;
+import mvcpattern.repository.CrewRepository;
 
 public class ReadingCrewFileController implements Controller {
     public static final String SRC_MAIN_RESOURCES_FRONTEND_MD = "src/main/resources/frontend.md";

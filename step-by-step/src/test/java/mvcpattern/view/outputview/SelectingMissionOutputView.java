@@ -1,4 +1,4 @@
-package mvcpattern.view;
+package mvcpattern.view.outputview;
 
 import java.util.Iterator;
 import java.util.List;
