@@ -16,4 +16,11 @@ public class MissionRepository {
 
         missions.addAll(collectedMission);
     }
+
+    public List<String> findAllNamesByEachLevel(Level level) {
+        return missions.stream()
+                .filter(mission -> mission.getLevel() == level)
+                .map(mission -> mission.getMissionName())
+                .collect(Collectors.toList());
+    }
 }
