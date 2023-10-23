@@ -6,6 +6,7 @@ import mvcpattern.controller.Controller;
 import mvcpattern.controller.FindPairController;
 import mvcpattern.controller.PairMatchingController;
 import mvcpattern.controller.ReadingCrewFileController;
+import mvcpattern.controller.ResetPairController;
 import mvcpattern.controller.SavingMissionsController;
 import mvcpattern.controller.SelectingFeatureController;
 import mvcpattern.controller.SelectingMissionController;
@@ -17,6 +18,7 @@ import mvcpattern.system.util.PairsMaker;
 import mvcpattern.view.inputview.GettingFeatureInputView;
 import mvcpattern.view.inputview.SelectingMissionInputView;
 import mvcpattern.view.outputview.MatchingResultOutputView;
+import mvcpattern.view.outputview.ResetOutputView;
 import mvcpattern.view.outputview.SelectingFeatureOutputView;
 import mvcpattern.view.outputview.SelectingMissionOutputView;
 
@@ -27,6 +29,7 @@ public class PairApplication {
     public static final String SELECT_MISSION = "selectMission";
     private static final String MATCH_PAIR = "matchPair";
     public static final String FIND_PAIR = "findPair";
+    public static final String RESET = "reset";
 
     private final Map<String, Controller> controllerMap = new HashMap<>();
 
@@ -49,6 +52,7 @@ public class PairApplication {
         // 기존에 정의했던 활동을 그대로 반영할 수 있다는 것
         // 객체 지향 프로그래밍의 진정한 장점이라고 생각할 수 있겠다
         controllerMap.put(FIND_PAIR, new FindPairController(matchingResultOutputView, pairMatchingRepository));
+        controllerMap.put(RESET, new ResetPairController(pairMatchingRepository, new ResetOutputView()));
     }
 
     public void run() {
@@ -77,16 +81,12 @@ public class PairApplication {
 
         if (featureCommand == FeatureCommand.FIND) {
             // 페어 조회를 하는 상황
-            controllerMap.get(SELECT_MISSION); // 과정, 미션 설명하는 과정이 우선적으로 필요하다
+            controllerMap.get(SELECT_MISSION).process(model); // 과정, 미션 설명하는 과정이 우선적으로 필요하다
             controllerMap.get(FIND_PAIR).process(model);
         }
 
         if (featureCommand == FeatureCommand.RESET) {
-
-        }
-
-        if (featureCommand == FeatureCommand.QUIT) {
-
+            controllerMap.get(RESET).process(model);
         }
     }
 

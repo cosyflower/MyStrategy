@@ -90,4 +90,8 @@ public class PairMatchingRepository {
     private List<Pair> findByPairMatchingInfo(PairMatchingInfo pairMatchingInfo) {
         return pairMatchingRepository.get(pairMatchingInfo);
     }
+
+    public void resetAll() {
+        pairMatchingRepository.clear();
+    }
 }
