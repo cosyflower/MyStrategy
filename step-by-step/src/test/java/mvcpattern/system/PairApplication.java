@@ -1,13 +1,18 @@
-package mvcpattern;
+package mvcpattern.system;
 
 import java.util.HashMap;
 import java.util.Map;
+import mvcpattern.CrewRepository;
+import mvcpattern.MissionRepository;
+import mvcpattern.PairMatchingRepository;
 import mvcpattern.controller.Controller;
+import mvcpattern.controller.PairMatchingController;
 import mvcpattern.controller.ReadingCrewFileController;
 import mvcpattern.controller.SavingMissionsController;
 import mvcpattern.controller.SelectingFeatureController;
 import mvcpattern.controller.SelectingMissionController;
 import mvcpattern.model.FeatureCommand;
+import mvcpattern.system.util.PairsMaker;
 import mvcpattern.view.GettingFeatureInputView;
 import mvcpattern.view.SelectingFeatureOutputView;
 import mvcpattern.view.SelectingMissionOutputView;
@@ -17,6 +22,7 @@ public class PairApplication {
     public static final String SAVE_MISSIONS = "saveMissions";
     public static final String SELECT_FEATURE = "selectFeature";
     public static final String SELECT_MISSION = "selectMission";
+    private static final String MATCH_PAIR = "matchPair";
 
     private final Map<String, Controller> controllerMap = new HashMap<>();
 
@@ -28,6 +34,8 @@ public class PairApplication {
         controllerMap.put(SELECT_MISSION, new SelectingMissionController(
                 new SelectingMissionOutputView(), null, new MissionRepository()
         ));
+        controllerMap.put(MATCH_PAIR, new PairMatchingController(new CrewRepository(),
+                new PairMatchingRepository(), new PairsMaker()));
     }
 
     public void run() {
@@ -35,20 +43,26 @@ public class PairApplication {
         readFileAndSaveCrews(model);
         saveMissions(model);
         getFeatureCommand(model);
+
+        doFeature(model);
     }
 
-    private void doFeature(HashMap<String, Object> model) {
+    private void doFeature(Map<String, Object> model) {
         // 최종 controller 들을 관리하는 Application 이라는 걸 다시 느낄 수 있다
         FeatureCommand featureCommand = (FeatureCommand) model.get("featureCommand");
         if (featureCommand == FeatureCommand.MATCHING) {
             controllerMap.get(SELECT_MISSION).process(model);
+            controllerMap.get(MATCH_PAIR).process(model);
         }
+
         if (featureCommand == FeatureCommand.FIND) {
 
         }
+
         if (featureCommand == FeatureCommand.RESET) {
 
         }
+
         if (featureCommand == FeatureCommand.QUIT) {
 
         }
