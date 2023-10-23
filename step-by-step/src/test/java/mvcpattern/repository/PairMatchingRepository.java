@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import mvcpattern.exception.DuplicationPairsException;
+import mvcpattern.exception.EmptyPairMatchingInfoException;
 import mvcpattern.model.Level;
 import mvcpattern.model.Pair;
 import mvcpattern.model.PairMatchingInfo;
@@ -66,13 +67,24 @@ public class PairMatchingRepository {
     }
 
     public List<List<String>> findAllPairNamesByPairMatchingInfo(PairMatchingInfo pairMatchingInfo) {
-        List<List<String>> pairNamesByPairMatchingInfo = new ArrayList<>();
         List<Pair> pairs = findByPairMatchingInfo(pairMatchingInfo);
-        for (Pair pair : pairs) {
-            pairNamesByPairMatchingInfo.add(pair.getNames());
+        if (pairs == null) {
+            throw new EmptyPairMatchingInfoException();
         }
 
-        return pairNamesByPairMatchingInfo;
+        return findAllNamesFromPairs(pairs);
+    }
+
+    private static List<List<String>> findAllNamesFromPairs(List<Pair> pairs) {
+        List<List<String>> pairNamesFromPairs = new ArrayList<>();
+        findAllNamesFromPair(pairNamesFromPairs, pairs);
+        return pairNamesFromPairs;
+    }
+
+    private static void findAllNamesFromPair(List<List<String>> allNames, List<Pair> pairs) {
+        for (Pair pair : pairs) {
+            allNames.add(pair.getNames());
+        }
     }
 
     private List<Pair> findByPairMatchingInfo(PairMatchingInfo pairMatchingInfo) {

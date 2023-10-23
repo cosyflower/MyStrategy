@@ -3,6 +3,7 @@ package mvcpattern.system;
 import java.util.HashMap;
 import java.util.Map;
 import mvcpattern.controller.Controller;
+import mvcpattern.controller.FindPairController;
 import mvcpattern.controller.PairMatchingController;
 import mvcpattern.controller.ReadingCrewFileController;
 import mvcpattern.controller.SavingMissionsController;
@@ -14,6 +15,7 @@ import mvcpattern.repository.MissionRepository;
 import mvcpattern.repository.PairMatchingRepository;
 import mvcpattern.system.util.PairsMaker;
 import mvcpattern.view.inputview.GettingFeatureInputView;
+import mvcpattern.view.inputview.SelectingMissionInputView;
 import mvcpattern.view.outputview.MatchingResultOutputView;
 import mvcpattern.view.outputview.SelectingFeatureOutputView;
 import mvcpattern.view.outputview.SelectingMissionOutputView;
@@ -24,40 +26,59 @@ public class PairApplication {
     public static final String SELECT_FEATURE = "selectFeature";
     public static final String SELECT_MISSION = "selectMission";
     private static final String MATCH_PAIR = "matchPair";
+    public static final String FIND_PAIR = "findPair";
 
     private final Map<String, Controller> controllerMap = new HashMap<>();
 
     public PairApplication() {
-        controllerMap.put(READ_CREW_FILE, new ReadingCrewFileController(new CrewRepository()));
-        controllerMap.put(SAVE_MISSIONS, new SavingMissionsController(new MissionRepository()));
+        CrewRepository crewRepository = new CrewRepository();
+        MissionRepository missionRepository = new MissionRepository();
+        PairMatchingRepository pairMatchingRepository = new PairMatchingRepository();
+        MatchingResultOutputView matchingResultOutputView = new MatchingResultOutputView();
+
+        controllerMap.put(READ_CREW_FILE, new ReadingCrewFileController(crewRepository));
+        controllerMap.put(SAVE_MISSIONS, new SavingMissionsController(missionRepository));
         controllerMap.put(SELECT_FEATURE, new SelectingFeatureController(
                 new SelectingFeatureOutputView(), new GettingFeatureInputView()));
         controllerMap.put(SELECT_MISSION, new SelectingMissionController(
-                new SelectingMissionOutputView(), null, new MissionRepository()
+                new SelectingMissionOutputView(), new SelectingMissionInputView(), missionRepository
         ));
-        controllerMap.put(MATCH_PAIR, new PairMatchingController(new CrewRepository(),
-                new PairMatchingRepository(), new PairsMaker(), new MatchingResultOutputView()));
+        controllerMap.put(MATCH_PAIR, new PairMatchingController(crewRepository,
+                pairMatchingRepository, new PairsMaker(), matchingResultOutputView));
+
+        // 기존에 정의했던 활동을 그대로 반영할 수 있다는 것
+        // 객체 지향 프로그래밍의 진정한 장점이라고 생각할 수 있겠다
+        controllerMap.put(FIND_PAIR, new FindPairController(matchingResultOutputView, pairMatchingRepository));
     }
 
     public void run() {
         Map<String, Object> model = new HashMap<>();
         readFileAndSaveCrews(model);
         saveMissions(model);
-        getFeatureCommand(model);
 
-        doFeature(model);
+        FeatureCommand featureCommand;
+        do {
+            readFeatureCommand(model);
+            featureCommand = (FeatureCommand) model.get("featureCommand");
+            doFeature(featureCommand, model);
+        } while (featureCommand != FeatureCommand.QUIT);
     }
 
-    private void doFeature(Map<String, Object> model) {
+    private void readFeatureCommand(Map<String, Object> model) {
+        controllerMap.get(SELECT_FEATURE).process(model);
+    }
+
+    private void doFeature(FeatureCommand featureCommand, Map<String, Object> model) {
         // 최종 controller 들을 관리하는 Application 이라는 걸 다시 느낄 수 있다
-        FeatureCommand featureCommand = (FeatureCommand) model.get("featureCommand");
         if (featureCommand == FeatureCommand.MATCHING) {
             controllerMap.get(SELECT_MISSION).process(model);
             controllerMap.get(MATCH_PAIR).process(model);
         }
 
         if (featureCommand == FeatureCommand.FIND) {
-
+            // 페어 조회를 하는 상황
+            controllerMap.get(SELECT_MISSION); // 과정, 미션 설명하는 과정이 우선적으로 필요하다
+            controllerMap.get(FIND_PAIR).process(model);
         }
 
         if (featureCommand == FeatureCommand.RESET) {
@@ -72,10 +93,6 @@ public class PairApplication {
     private void saveMissions(Map<String, Object> model) {
         controllerMap.get(SAVE_MISSIONS).process(model);
 
-    }
-
-    private void getFeatureCommand(Map<String, Object> model) {
-        controllerMap.get(SELECT_FEATURE).process(model);
     }
 
     private void readFileAndSaveCrews(Map<String, Object> model) {
