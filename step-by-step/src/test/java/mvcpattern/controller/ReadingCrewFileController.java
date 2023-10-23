@@ -11,7 +11,7 @@ import mvcpattern.model.Course;
 import mvcpattern.model.Crew;
 import mvcpattern.repository.CrewRepository;
 
-public class ReadingCrewFileController implements Controller {
+public class ReadingCrewFileController extends AbstractController {
     public static final String SRC_MAIN_RESOURCES_FRONTEND_MD = "src/main/resources/frontend.md";
     public static final String SRC_MAIN_RESOURCES_BACKEND_MD = "src/main/resources/backend.md";
     // 파일을 읽고
@@ -23,7 +23,7 @@ public class ReadingCrewFileController implements Controller {
     }
 
     @Override
-    public void process(Map<String, Object> model) {
+    public void doProcess(Map<String, Object> model) {
         try {
             List<Crew> backEndCrews =
                     NamesToCrewConverter.convert(readBackEndCrews(), Course.BACKEND);

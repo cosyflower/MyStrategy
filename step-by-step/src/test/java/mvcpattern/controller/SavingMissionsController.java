@@ -6,7 +6,7 @@ import java.util.Map;
 import mvcpattern.model.Level;
 import mvcpattern.repository.MissionRepository;
 
-public class SavingMissionsController implements Controller {
+public class SavingMissionsController extends AbstractController {
     public final MissionRepository missionRepository;
 
     public SavingMissionsController(MissionRepository missionRepository) {
@@ -14,7 +14,7 @@ public class SavingMissionsController implements Controller {
     }
 
     @Override
-    public void process(Map<String, Object> model) {
+    public void doProcess(Map<String, Object> model) {
         saveMissions(getLevelOneMissionNames(), Level.ONE);
         saveMissions(getLevelTwoMissionNames(), Level.TWO);
         saveMissions(getLevelFiveMissionNames(), Level.FIVE);

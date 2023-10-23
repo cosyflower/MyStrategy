@@ -4,7 +4,7 @@ import java.util.Map;
 import mvcpattern.repository.PairMatchingRepository;
 import mvcpattern.view.outputview.OutputView;
 
-public class ResetPairController implements Controller {
+public class ResetPairController extends AbstractController {
     public final PairMatchingRepository pairMatchingRepository;
     public final OutputView outputView;
 
@@ -15,7 +15,7 @@ public class ResetPairController implements Controller {
     }
 
     @Override
-    public void process(Map<String, Object> model) {
+    public void doProcess(Map<String, Object> model) {
         pairMatchingRepository.resetAll();
         outputView.print(model);
 

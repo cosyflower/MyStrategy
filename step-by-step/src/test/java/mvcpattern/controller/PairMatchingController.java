@@ -12,7 +12,7 @@ import mvcpattern.repository.PairMatchingRepository;
 import mvcpattern.system.util.PairsMaker;
 import mvcpattern.view.outputview.OutputView;
 
-public class PairMatchingController implements Controller {
+public class PairMatchingController extends AbstractController {
     private final CrewRepository crewRepository;
     private final PairMatchingRepository pairMatchingRepository;
     private final PairsMaker pairsMaker;
@@ -27,7 +27,7 @@ public class PairMatchingController implements Controller {
     }
 
     @Override
-    public void process(Map<String, Object> model) {
+    public void doProcess(Map<String, Object> model) {
         PairMatchingInfo pairMatchingInfo = (PairMatchingInfo) model.get("pairMatchingInfo");
         List<Crew> foundCrews = crewRepository.findCrewsByCourse(pairMatchingInfo.getCourse());
 

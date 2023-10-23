@@ -11,7 +11,7 @@ import mvcpattern.repository.MissionRepository;
 import mvcpattern.view.inputview.InputView;
 import mvcpattern.view.outputview.OutputView;
 
-public class SelectingMissionController implements Controller {
+public class SelectingMissionController extends AbstractController {
     private final OutputView outputView;
     private final InputView<PairMatchingInfo> inputView;
     private final MissionRepository missionRepository;
@@ -24,7 +24,7 @@ public class SelectingMissionController implements Controller {
     }
 
     @Override
-    public void process(Map<String, Object> model) {
+    public void doProcess(Map<String, Object> model) {
         // 전체적인 Flow 작성해야 한다
         // OutputView 에서 필요한 정보들을 model 에 담아서 보내준다
         putCourseNamesToModel(model);
