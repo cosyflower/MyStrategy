@@ -17,6 +17,6 @@ public class SelectingFeatureController implements Controller { // 기능을 출
     @Override
     public void process(Map<String, Object> model) { // 기능을 출력하고, 사용자로 부터 입력을 받아야 한다
         outputView.print(model);
-        model.put("featureCommand", inputView.getInput()); // String 어떠한 정보, 그에 대응하는 value 가 같이 들어간다
+        model.put("featureCommand", inputView.getInput(model)); // String 어떠한 정보, 그에 대응하는 value 가 같이 들어간다
     }
 }

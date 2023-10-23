@@ -1,5 +1,7 @@
 package mvcpattern.model;
 
+import java.util.Arrays;
+
 public enum Course {
     FRONTEND("프론트엔드"),
     BACKEND("백엔드");
@@ -8,6 +10,13 @@ public enum Course {
 
     Course(String courseName) {
         this.courseName = courseName;
+    }
+
+    public static Course findByName(String findingCourse) {
+        return Arrays.stream(Course.values())
+                .filter(course -> course.getCourseName().equals(findingCourse))
+                .findFirst()
+                .orElseThrow(IllegalArgumentException::new);
     }
 
     public String getCourseName() {

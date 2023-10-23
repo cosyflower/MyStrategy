@@ -2,12 +2,13 @@ package mvcpattern.view;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.util.Map;
 import mvcpattern.converter.StringToFeatureCommandConverter;
 import mvcpattern.model.FeatureCommand;
 
 public class GettingFeatureInputView implements InputView<FeatureCommand> {
     @Override
-    public FeatureCommand getInput() {
+    public FeatureCommand getInput(Map<String, Object> model) {
         String input = readInput();
         return StringToFeatureCommandConverter.convert(input);
     }

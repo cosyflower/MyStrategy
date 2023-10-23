@@ -1,6 +1,7 @@
 package mvcpattern;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import mvcpattern.model.Level;
@@ -22,5 +23,9 @@ public class MissionRepository {
                 .filter(mission -> mission.getLevel() == level)
                 .map(mission -> mission.getMissionName())
                 .collect(Collectors.toList());
+    }
+
+    public List<Mission> findAll() {
+        return Collections.unmodifiableList(missions);
     }
 }
