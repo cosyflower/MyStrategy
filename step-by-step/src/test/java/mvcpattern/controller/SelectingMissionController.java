@@ -25,10 +25,17 @@ public class SelectingMissionController implements Controller {
 
     @Override
     public void process(Map<String, Object> model) {
+        // 전체적인 Flow 작성해야 한다
+        // OutputView 에서 필요한 정보들을 model 에 담아서 보내준다
         putCourseNamesToModel(model);
         putMissionNamesToModel(model);
         outputView.print(model);
 
+        // InputView 는 입력을 받는다
+        // 당연히 String 형태로 받기 때문에 원하는 형태로 변환까지 진행해야 한다
+        // 변환에 필요한 정보들을 담아서 View 에게 전달한다
+        // View는 정보를 확인하고 원하는 객체 형태로 전환해서 반환한다
+        // 반환된 정보 역시 model 에 추가한다
         readInputIntoModel(model);
     }
 

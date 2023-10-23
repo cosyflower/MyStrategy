@@ -25,10 +25,22 @@ public class PairMatchingController implements Controller {
 
     @Override
     public void process(Map<String, Object> model) {
-        // input으로 들어온 정보를 먼저 확인해야 한다
         PairMatchingInfo pairMatchingInfo = (PairMatchingInfo) model.get("pairMatchingInfo");
         List<Crew> foundCrews = crewRepository.findCrewsByCourse(pairMatchingInfo.getCourse());
-        List<Pair> pairs = pairsMaker.makePairs(getShuffledCrews(foundCrews));
+
+        // PairMatchingRepository에서 조회를 해야 한다 - 인자로는 pairMatchingInfo 가 필요하고, pairs(내가 만든 페어) 필요하다
+        // 동일한 레벨에 있는 각가의 List<Pair> 를 모두 가지고 와야 한다 -> List<List<Pair>> 는 레벨에서 유지하는 페어 그룹들의 그룹
+        // PairM..Repo.. 에서 checkDuplicatedPair(pairMatchingInfo, pairs) 해야 한다
+        List<Pair> pairs;
+        int matchCount = 0;
+        do {
+            pairs = pairsMaker.makePairs(getShuffledCrews(foundCrews));
+            matchCount++;
+            if (matchCount == 3) {
+                throw new IllegalArgumentException("Shuffle 3회 시도");
+            }
+        } while (pairMatchingRepository.hasDuplicatedPairAtSameLevel(pairMatchingInfo, pairs));
+
         pairMatchingRepository.save(pairMatchingInfo, pairs);
     }
 

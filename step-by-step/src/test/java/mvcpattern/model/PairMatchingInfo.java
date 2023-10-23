@@ -13,7 +13,7 @@ public class PairMatchingInfo {
         return course;
     }
 
-    public Mission getMission() {
-        return mission;
+    public Level getLevel() {
+        return mission.getLevel();
     }
 }
