@@ -29,8 +29,7 @@ public class BaseBallApplication {
         controllerMap.put(ENTER_TRIPLE_BALLS_PATH, new EnterTripleBallsController(
                 new EnterTripleBallsOutputView(), new EnterTripleBallsInputView()
         ));
-//        controllerMap.put(GAME_RESULT_PATH, new GameResultController(new GameResultOutputView(),
-//                RandomTripleBallsGenerator.generate()));
+
         controllerMap.put(GAME_RESTART, new GameRestartController(new GameRestartOutputView(),
                 new GameRestartInputView()));
     }

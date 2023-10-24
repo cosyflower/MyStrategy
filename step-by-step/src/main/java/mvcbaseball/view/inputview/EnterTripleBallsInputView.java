@@ -6,15 +6,16 @@ import java.io.InputStreamReader;
 import java.util.Map;
 import mvcbaseball.model.TripleBalls;
 import mvcbaseball.system.converter.InputToTripleBallsConverter;
+import mvcbaseball.system.validator.InputNumberValidator;
 
 public class EnterTripleBallsInputView implements InputView<TripleBalls> {
     @Override
     public TripleBalls input(Map<String, Object> model) {
         try {
             String input = readInput();
+            new InputNumberValidator(input);
             return InputToTripleBallsConverter.convert(input);
         } catch (Exception e) {
-            System.out.println(e.getMessage());
             throw new IllegalArgumentException();
         }
     }
