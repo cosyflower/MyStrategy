@@ -3,6 +3,7 @@ import mvcbaseball.model.Ball;
 import mvcbaseball.model.TripleBalls;
 import mvcbaseball.system.converter.InputToTripleBallsConverter;
 import mvcbaseball.system.util.RandomTripleBallsGenerator;
+import mvcbaseball.system.validator.InputNumberValidator;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -42,5 +43,12 @@ public class TempTest {
         for (Integer integer : integers) {
             System.out.println(integer);
         }
+    }
+
+    @Test
+    void 예외_발생_IllegalArugumentException_확인() {
+        String str = new String("12 9");
+        Assertions.assertThatThrownBy(() -> new InputNumberValidator(str))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 }

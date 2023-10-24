@@ -16,7 +16,7 @@ public class EnterTripleBallsInputView implements InputView<TripleBalls> {
             new InputNumberValidator(input);
             return InputToTripleBallsConverter.convert(input);
         } catch (Exception e) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(e.getMessage());
         }
     }
 

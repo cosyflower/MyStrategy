@@ -14,7 +14,7 @@ public class TripleBallsValidator {
 
     private void hasThreeDigits() {
         if (validateTarget.length() != 3) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("세개의 숫자로 구성되어 있지 않습니다.");
         }
     }
 
@@ -24,7 +24,7 @@ public class TripleBallsValidator {
                 .distinct().count();
 
         if (removedSameNumber != characters.size()) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("중복된 숫자가 존재합니다");
         }
     }
     // model 로직을 반영한 validator model에서 새로운 객체를 형성 시 호출한다

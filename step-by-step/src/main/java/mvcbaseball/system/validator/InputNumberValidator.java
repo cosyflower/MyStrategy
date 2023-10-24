@@ -14,13 +14,13 @@ public class InputNumberValidator {
 
     private void isNullOrEmpty() {
         if (inputNumber == null || inputNumber.isEmpty()) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("아무것도 입력되지 않았습니다");
         }
     }
 
     private void hasWrongCharacters() {
         if (!NUMBER_PATTERN.matcher(inputNumber).matches()) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("잚못된 문자가 입력되었습니다");
         }
     }
 
