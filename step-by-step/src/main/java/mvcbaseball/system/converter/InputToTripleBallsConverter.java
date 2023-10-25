@@ -9,7 +9,7 @@ import mvcbaseball.model.TripleBalls;
 import mvcbaseball.system.validator.TripleBallsValidator;
 
 public class InputToTripleBallsConverter {
-    public static TripleBalls convert(String input) {
+    public static TripleBalls convert(String input) throws IllegalArgumentException {
         new TripleBallsValidator(input);
         List<Character> charList = StringToCharList(input);
 

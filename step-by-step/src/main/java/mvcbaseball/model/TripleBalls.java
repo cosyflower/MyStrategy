@@ -30,7 +30,8 @@ public class TripleBalls {
     private int getResultCount(TripleBalls otherTripleBalls, Result result) {
         int count = 0;
         for (Ball eachBall : tripleBalls) {
-            count += otherTripleBalls.getTripleBalls().stream()
+            count += otherTripleBalls.getTripleBalls()
+                    .stream()
                     .filter(otherBall -> otherBall.compareBallCondition(eachBall) == result)
                     .count();
         }

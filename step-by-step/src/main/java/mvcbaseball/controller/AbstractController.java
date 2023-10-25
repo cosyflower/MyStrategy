@@ -14,6 +14,7 @@ public abstract class AbstractController implements Controller {
         } catch (IllegalArgumentException e) {
             model.put("errorMessage", e.getMessage());
             outputView.print(model);
+            throw new IllegalArgumentException(e.getMessage());
         }
     }
 
