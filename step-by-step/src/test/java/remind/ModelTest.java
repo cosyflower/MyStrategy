@@ -12,6 +12,8 @@ public class ModelTest extends WrappingModel<String> {
 
         String s = map.get("1");
         System.out.println(s);
+
+        System.out.println("Test git");
     }
 
 }
