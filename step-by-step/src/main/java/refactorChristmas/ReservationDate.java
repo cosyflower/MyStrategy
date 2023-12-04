@@ -16,4 +16,9 @@ public class ReservationDate {
     public boolean isWeekendValue() {
         return !isWeekDayValue();
     }
+
+    public boolean isBeforeChristmasValue() {
+        return localDate.isBefore(LocalDate.of(2023, 12, 25)) ||
+                localDate.isEqual(LocalDate.of(2023, 12, 25));
+    }
 }

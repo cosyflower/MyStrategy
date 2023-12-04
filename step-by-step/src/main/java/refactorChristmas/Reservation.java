@@ -16,4 +16,8 @@ public class Reservation {
     public boolean isWeekend() {
         return reservationDate.isWeekendValue();
     }
+
+    public boolean isBeforeChristmas() {
+        return reservationDate.isBeforeChristmasValue();
+    }
 }
