@@ -24,4 +24,16 @@ public class Reservation {
     public boolean isSpecialDay() {
         return reservationDate.isSpecialDayValue();
     }
+
+    public int getDaysUntilChristmas() {
+        return reservationDate.getDayUnitlChristmasValue();
+    }
+
+    public int getDesertQuantity() {
+        return reservationOrders.getDesertTotal();
+    }
+
+    public int getMainQuantity() {
+        return reservationOrders.getMainTotal();
+    }
 }

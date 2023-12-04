@@ -29,4 +29,8 @@ public class ReservationDate {
         List<Integer> specialDayValues = new ArrayList<>(Arrays.asList(3, 10, 17, 24, 25, 31));
         return specialDayValues.contains(localDate.getDayOfMonth());
     }
+
+    public int getDayUnitlChristmasValue() {
+        return 25 - localDate.getDayOfMonth();
+    }
 }
