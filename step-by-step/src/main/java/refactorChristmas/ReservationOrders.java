@@ -1,2 +1,4 @@
-package refactorChristmas;public class ReservationOrders {
+package refactorChristmas;
+
+public class ReservationOrders {
 }

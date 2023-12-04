@@ -8,4 +8,12 @@ public class Reservation {
         this.reservationDate = reservationDate;
         this.reservationOrders = reservationOrders;
     }
+
+    public boolean isWeekDay() {
+        return reservationDate.isWeekDayValue();
+    }
+
+    public boolean isWeekend() {
+        return reservationDate.isWeekendValue();
+    }
 }
