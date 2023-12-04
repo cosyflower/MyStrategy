@@ -17,7 +17,11 @@ public class Reservation {
         return reservationDate.isWeekendValue();
     }
 
-    public boolean isBeforeChristmas() {
+    public boolean isBeforeOrChristmasDay() {
         return reservationDate.isBeforeChristmasValue();
+    }
+
+    public boolean isSpecialDay() {
+        return reservationDate.isSpecialDayValue();
     }
 }

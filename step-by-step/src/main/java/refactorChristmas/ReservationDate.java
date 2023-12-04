@@ -1,6 +1,9 @@
 package refactorChristmas;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class ReservationDate {
     private final LocalDate localDate;
@@ -20,5 +23,10 @@ public class ReservationDate {
     public boolean isBeforeChristmasValue() {
         return localDate.isBefore(LocalDate.of(2023, 12, 25)) ||
                 localDate.isEqual(LocalDate.of(2023, 12, 25));
+    }
+
+    public boolean isSpecialDayValue() {
+        List<Integer> specialDayValues = new ArrayList<>(Arrays.asList(3, 10, 17, 24, 25, 31));
+        return specialDayValues.contains(localDate.getDayOfMonth());
     }
 }
