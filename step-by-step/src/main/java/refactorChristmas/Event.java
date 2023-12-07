@@ -12,7 +12,6 @@ public enum Event {
             reservation -> new DiscountPrice(2023 * reservation.getMainQuantity())), // 메인 메뉴 개수 구하기
     SPECIAL_EVENT(Reservation::isSpecialDay,
             reservation -> new DiscountPrice(1000));
-//    PROMOTION_EVENT(); // PromotionConditioner를 통해서 확인해야 한다 + 따로 명시하자
 
     private final Predicate<Reservation> reservationPredicate; // 할인여부 확인
     private final Function<Reservation, DiscountPrice> discountPriceFunction; // 할인 및 증정 금액을 제공한다

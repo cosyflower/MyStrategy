@@ -30,10 +30,10 @@ public class Reservation {
     }
 
     public int getDesertQuantity() {
-        return reservationOrders.getDesertTotal();
+        return reservationOrders.getSpecificMenuTypeTotal(MenuType.DESERT);
     }
 
     public int getMainQuantity() {
-        return reservationOrders.getMainTotal();
+        return reservationOrders.getSpecificMenuTypeTotal(MenuType.MAIN);
     }
 }

@@ -11,8 +11,8 @@ public class ReservationOrdersTest {
                 new Order(Menu.STEAK, new MenuQuantity(1))
         ));
 
-        int mainTotal = reservationOrders.getMainTotal();
-        int desertTotal = reservationOrders.getDesertTotal();
+        int mainTotal = reservationOrders.getSpecificMenuTypeTotal(MenuType.MAIN);
+        int desertTotal = reservationOrders.getSpecificMenuTypeTotal(MenuType.DESERT);
 
         System.out.println(mainTotal);
         System.out.println(desertTotal);

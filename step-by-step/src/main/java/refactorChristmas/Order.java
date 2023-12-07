@@ -9,11 +9,7 @@ public class Order {
         this.menuQuantity = menuQuantity;
     }
 
-    public boolean isMainType() {
-        return menu.getMenuType() == MenuType.MAIN;
-    }
-
-    public boolean isDesertType() {
-        return menu.getMenuType() == MenuType.DESERT;
+    public boolean isSameType(MenuType menuType) {
+        return menu.getMenuType() == menuType;
     }
 }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="refactorChristmas.ReservationOrdersTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-12-07T23:33:59" hostname="hwangseonghun-ui-MacBookPro.local" time="0.023">
+<testsuite name="refactorChristmas.ReservationOrdersTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-12-07T23:48:51" hostname="hwangseonghun-ui-MacBookPro.local" time="0.024">
   <properties/>
-  <testcase name="flow()" classname="refactorChristmas.ReservationOrdersTest" time="0.023"/>
+  <testcase name="flow()" classname="refactorChristmas.ReservationOrdersTest" time="0.024"/>
   <system-out><![CDATA[2
 0
 ]]></system-out>

@@ -9,15 +9,9 @@ public class ReservationOrders {
         this.reservationOrders = reservationOrders;
     }
 
-    public int getDesertTotal() {
+    public int getSpecificMenuTypeTotal(MenuType menuType) {
         return (int) reservationOrders.stream()
-                .filter(Order::isDesertType)
-                .count();
-    }
-
-    public int getMainTotal() {
-        return (int) reservationOrders.stream()
-                .filter(Order::isMainType)
+                .filter(order -> order.isSameType(menuType))
                 .count();
     }
 }
