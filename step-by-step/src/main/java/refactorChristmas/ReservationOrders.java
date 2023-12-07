@@ -10,10 +10,14 @@ public class ReservationOrders {
     }
 
     public int getDesertTotal() {
-        return 0;
+        return (int) reservationOrders.stream()
+                .filter(Order::isDesertType)
+                .count();
     }
 
     public int getMainTotal() {
-        return 0;
+        return (int) reservationOrders.stream()
+                .filter(Order::isMainType)
+                .count();
     }
 }
