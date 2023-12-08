@@ -10,7 +10,8 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public enum Menu {
-    STEAK(MAIN, "스테이크", 20_000);
+    STEAK(MAIN, "스테이크", 20_000),
+    CHAMPAGNE(MenuType.DRINK, "샴페인", 25_000);
 
     private static final Map<String, Menu> menuMap = Collections.unmodifiableMap(
             Arrays.stream(values())
@@ -22,7 +23,7 @@ public enum Menu {
 
     Menu(MenuType menuType, String menuName, int menuPrice) {
         this.menuType = menuType;
-        MenuName = menuName;
+        this.MenuName = menuName;
         this.menuPrice = menuPrice;
     }
 

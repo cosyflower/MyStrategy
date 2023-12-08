@@ -1,9 +1,11 @@
 package refactorChristmas.eventProfit;
 
+import refactorChristmas.DiscountStatus;
+import refactorChristmas.promotion.PromotionProfit;
+
 public class TotalProfit extends EventProfit {
-    // 증정까지 포함한다
     // EnumMap + PromotionProfit
-    public TotalProfit(int priceValue) {
-        super(priceValue);
+    public TotalProfit(DiscountStatus discountStatus, PromotionProfit promotionProfit) {
+        super(discountStatus.getDiscountTotal() + promotionProfit.getPriceValue());
     }
 }

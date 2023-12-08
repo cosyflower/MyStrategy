@@ -1,9 +1,13 @@
 package refactorChristmas.eventProfit;
 
-public class EventProfit {
+public abstract class EventProfit {
     private final int priceValue;
 
     public EventProfit(int priceValue) {
         this.priceValue = priceValue;
+    }
+
+    public int getPriceValue() {
+        return priceValue;
     }
 }
