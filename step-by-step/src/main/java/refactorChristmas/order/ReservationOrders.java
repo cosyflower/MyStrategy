@@ -17,8 +17,12 @@ public class ReservationOrders {
     }
 
     public boolean isOverPromotionCriteria() {
+        return getOrdersPriceTotal() > 120_000;
+    }
+
+    public int getOrdersPriceTotal() {
         return reservationOrders.stream()
                 .mapToInt(Order::getMenuPrice)
-                .sum() > 120_000;
+                .sum();
     }
 }

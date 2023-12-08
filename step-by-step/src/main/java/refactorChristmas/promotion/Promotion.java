@@ -1,5 +1,6 @@
 package refactorChristmas.promotion;
 
+import refactorChristmas.eventProfit.PromotionProfit;
 import refactorChristmas.menu.Menu;
 
 public class Promotion {

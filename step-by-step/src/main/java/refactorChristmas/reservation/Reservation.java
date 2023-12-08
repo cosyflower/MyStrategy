@@ -32,6 +32,10 @@ public class Reservation {
         return reservationOrders.isOverPromotionCriteria();
     }
 
+    public int getOrderPriceTotal() {
+        return reservationOrders.getOrdersPriceTotal();
+    }
+
     public int getDaysUntilChristmas() {
         return reservationDate.getDayUnitlChristmasValue();
     }

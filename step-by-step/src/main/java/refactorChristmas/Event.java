@@ -4,9 +4,9 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 import refactorChristmas.eventProfit.DiscountProfit;
 import refactorChristmas.eventProfit.EventProfit;
+import refactorChristmas.eventProfit.PromotionProfit;
 import refactorChristmas.menu.Menu;
 import refactorChristmas.promotion.Promotion;
-import refactorChristmas.promotion.PromotionProfit;
 import refactorChristmas.reservation.Reservation;
 
 public enum Event {

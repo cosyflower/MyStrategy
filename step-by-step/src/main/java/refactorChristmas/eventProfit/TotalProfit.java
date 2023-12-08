@@ -1,7 +1,6 @@
 package refactorChristmas.eventProfit;
 
 import refactorChristmas.DiscountStatus;
-import refactorChristmas.promotion.PromotionProfit;
 
 public class TotalProfit extends EventProfit {
     // EnumMap + PromotionProfit

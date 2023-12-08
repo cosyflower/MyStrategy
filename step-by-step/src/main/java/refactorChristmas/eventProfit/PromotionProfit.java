@@ -1,6 +1,4 @@
-package refactorChristmas.promotion;
-
-import refactorChristmas.eventProfit.EventProfit;
+package refactorChristmas.eventProfit;
 
 public class PromotionProfit extends EventProfit {
     public PromotionProfit(int priceValue) {
