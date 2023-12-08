@@ -1,6 +1,8 @@
 package refactorChristmas;
 
+import refactorChristmas.order.ReservationOrders;
 import refactorChristmas.reservation.Reservation;
+import refactorChristmas.reservation.ReservationDate;
 
 public class EventPlanner {
     public void run() {
@@ -9,7 +11,11 @@ public class EventPlanner {
     }
 
     private void setUp() {
-        Reservation reservation = new Reservation();
+        RegisterDateDTO registerDateDTO = new RegisterDateController().process();
+        ReservationDate reservationDate = new ReservationDate(registerDateDTO.toRegisterDate());
+        RegisterOrdersDTO registerOrdersDTO = new RegisterOrdersController().process();
+        ReservationOrders reservationOrders = new ReservationOrders(registerOrdersDTO.toRegisterOrders());
+        Reservation reservation = new Reservation(reservationDate, reservationOrders);
     }
 
     private void execute(Reservation reservation) {
