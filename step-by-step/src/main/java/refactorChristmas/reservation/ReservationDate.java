@@ -1,4 +1,4 @@
-package refactorChristmas;
+package refactorChristmas.reservation;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

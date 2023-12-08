@@ -1,6 +1,6 @@
-package refactorChristmas;
+package refactorChristmas.menu;
 
-import static refactorChristmas.MenuType.MAIN;
+import static refactorChristmas.menu.MenuType.MAIN;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -37,5 +37,9 @@ public enum Menu {
 
     public String getMenuName() {
         return MenuName;
+    }
+
+    public int getMenuPrice() {
+        return menuPrice;
     }
 }

@@ -1,4 +1,4 @@
-package refactorChristmas;
+package refactorChristmas.menu;
 
 public enum MenuType {
     MAIN(),

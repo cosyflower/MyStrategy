@@ -2,6 +2,7 @@ package refactorChristmas;
 
 import java.time.LocalDate;
 import org.junit.jupiter.api.Test;
+import refactorChristmas.reservation.ReservationDate;
 
 public class ReservationDateTest {
     @Test

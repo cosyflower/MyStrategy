@@ -2,6 +2,7 @@ package refactorChristmas;
 
 import java.util.function.Function;
 import java.util.function.Predicate;
+import refactorChristmas.reservation.Reservation;
 
 public enum Event {
     CRHISTMAS_DDAY_EVENT(Reservation::isBeforeOrChristmasDay,

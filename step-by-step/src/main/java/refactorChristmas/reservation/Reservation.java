@@ -1,4 +1,7 @@
-package refactorChristmas;
+package refactorChristmas.reservation;
+
+import refactorChristmas.menu.MenuType;
+import refactorChristmas.order.ReservationOrders;
 
 public class Reservation {
     private final ReservationDate reservationDate;
@@ -23,6 +26,10 @@ public class Reservation {
 
     public boolean isSpecialDay() {
         return reservationDate.isSpecialDayValue();
+    }
+
+    public boolean canGetPromotion() {
+        return reservationOrders.isOverPromotionCriteria();
     }
 
     public int getDaysUntilChristmas() {

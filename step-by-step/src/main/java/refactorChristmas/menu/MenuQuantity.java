@@ -1,4 +1,4 @@
-package refactorChristmas;
+package refactorChristmas.menu;
 
 public class MenuQuantity {
     private final int menuQuantityValue;

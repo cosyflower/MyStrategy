@@ -1,4 +1,8 @@
-package refactorChristmas;
+package refactorChristmas.order;
+
+import refactorChristmas.menu.Menu;
+import refactorChristmas.menu.MenuQuantity;
+import refactorChristmas.menu.MenuType;
 
 public class Order {
     private final Menu menu; // 메뉴 관련 정보
@@ -11,5 +15,9 @@ public class Order {
 
     public boolean isSameType(MenuType menuType) {
         return menu.getMenuType() == menuType;
+    }
+
+    public int getMenuPrice() {
+        return menu.getMenuPrice();
     }
 }
